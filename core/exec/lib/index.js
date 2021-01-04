@@ -1,9 +1,9 @@
 'use strict';
 
-const cp = require('child_process');
 const path = require('path');
 const Package = require('@imooc-cli-dev/package');
 const log = require('@imooc-cli-dev/log');
+const { exec: spawn } = require('@imooc-cli-dev/utils');
 
 const SETTINGS = {
   init: '@imooc-cli/init',
@@ -83,15 +83,6 @@ async function exec() {
       log.error(e.message);
     }
   }
-}
-
-function spawn(command, args, options) {
-  const win32 = process.platform === 'win32';
-
-  const cmd = win32 ? 'cmd' : command;
-  const cmdArgs = win32 ? ['/c'].concat(command, args) : args;
-
-  return cp.spawn(cmd, cmdArgs, options || {});
 }
 
 module.exports = exec;
