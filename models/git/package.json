@@ -1,5 +1,5 @@
 {
-  "name": "@imooc-cli-dev/publish",
+  "name": "@imooc-cli-dev/git",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "sam <247765564@qq.com>",
@@ -13,9 +13,6 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "https://git.imooc.com/class-110/imooc-cli-dev.git"
@@ -24,9 +21,14 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@imooc-cli-dev/command": "file:../../models/command",
     "@imooc-cli-dev/log": "file:../../utils/log",
-    "@imooc-cli-dev/git": "file:../../models/git",
-    "fs-extra": "^10.0.0"
+    "@imooc-cli-dev/utils": "file:../../utils/utils",
+    "axios": "^0.21.1",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.1.0",
+    "semver": "^7.3.5",
+    "simple-git": "^2.39.0",
+    "terminal-link": "^2.1.1",
+    "user-home": "^3.0.0"
   }
 }

@@ -5,11 +5,17 @@ const fs = require('fs');
 const fse = require('fs-extra');
 const Command = require('@imooc-cli-dev/command');
 const log = require('@imooc-cli-dev/log');
+const Git = require('@imooc-cli-dev/git');
 
 class PublishCommand extends Command {
   init() {
     // 处理参数
-    log.verbose('init', this._argv);
+    log.verbose('publish', this._argv, this._cmd);
+    this.options = {
+      refreshServer: this._cmd.refreshServer,
+      refreshToken: this._cmd.refreshToken,
+      refreshOwner: this._cmd.refreshOwner,
+    };
   }
 
   async exec() {
@@ -18,6 +24,9 @@ class PublishCommand extends Command {
       // 1.初始化检查
       this.prepare();
       // 2.Git Flow自动化
+      const git = new Git(this.projectInfo, this.options);
+      await git.prepare(); // 自动化提交准备和代码仓库初始化
+      await git.commit(); // 代码自动化提交
       // 3.云构建和云发布
       const endTime = new Date().getTime();
       log.info('本次发布耗时：', Math.floor((endTime - startTime) / 1000) + '秒');
