@@ -12,6 +12,7 @@ const log = require('@imooc-cli-dev/log');
 const { readFile, writeFile, spinnerStart } = require('@imooc-cli-dev/utils');
 const Github = require('./Github');
 const Gitee = require('./Gitee');
+const CloudBuild = require('@imooc-cli-dev/cloudbuild');
 
 const DEFAULT_CLI_HOME = '.imooc-cli-dev';
 const GIT_ROOT_DIR = '.git';
@@ -53,6 +54,7 @@ class Git {
     refreshServer = false,
     refreshToken = false,
     refreshOwner = false,
+    buildCmd = '',
   }) {
     this.name = name; // 项目名称
     this.version = version; // 项目版本
@@ -69,6 +71,7 @@ class Git {
     this.refreshToken = refreshToken; // 是否强化刷新远程仓库token
     this.refreshOwner = refreshOwner; // 是否强化刷新远程仓库类型
     this.branch = null; // 本地开发分支
+    this.buildCmd = buildCmd; // 构建命令
   }
 
   async prepare() {
@@ -103,6 +106,26 @@ class Git {
     await this.pullRemoteMasterAndBranch();
     // 6.将开发分支推送到远程仓库
     await this.pushRemoteRepo(this.branch);
+  }
+
+  async publish() {
+    await this.preparePublish();
+    const cloudBuild = new CloudBuild(this, {
+      buildCmd: this.buildCmd,
+    });
+    await cloudBuild.init();
+    await cloudBuild.build();
+  }
+
+  preparePublish() {
+    if (this.buildCmd) {
+      const buildCmdArray = this.buildCmd.split(' ');
+      if (buildCmdArray[0] !== 'npm' && buildCmdArray[0] !== 'cnpm') {
+        throw new Error('Build命令非法，必须使用npm或cnpm！');
+      }
+    } else {
+      this.buildCmd = 'npm run build';
+    }
   }
 
   async pullRemoteMasterAndBranch() {
