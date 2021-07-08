@@ -47,6 +47,10 @@ function registerCommand() {
     .option('--refreshToken', '强制更新远程仓库token')
     .option('--refreshOwner', '强制更新远程仓库类型')
     .option('--buildCmd <buildCmd>', '构建命令')
+    .option('--prod', '是否正式发布')
+    .option('--sshUser <sshUser>', '模板服务器用户名')
+    .option('--sshIp <sshIp>', '模板服务器IP或域名')
+    .option('--sshPath <sshPath>', '模板服务器上传路径')
     .action(exec);
 
   // 开启debug模式
