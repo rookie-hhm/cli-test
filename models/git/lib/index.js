@@ -13,9 +13,10 @@ const { Observable } = require('rxjs');
 const log = require('@imooc-cli-dev/log');
 const { readFile, writeFile, spinnerStart } = require('@imooc-cli-dev/utils');
 const request = require('@imooc-cli-dev/request');
+const CloudBuild = require('@imooc-cli-dev/cloudbuild');
 const Github = require('./Github');
 const Gitee = require('./Gitee');
-const CloudBuild = require('@imooc-cli-dev/cloudbuild');
+const ComponentRequest = require('../lib/ComponentRequest');
 
 const DEFAULT_CLI_HOME = '.imooc-cli-dev';
 const GIT_ROOT_DIR = '.git';
@@ -32,6 +33,7 @@ const REPO_OWNER_ORG = 'org';
 const VERSION_RELEASE = 'release';
 const VERSION_DEVELOP = 'dev';
 const TEMPLATE_TEMP_DIR = 'oss';
+const COMPONENT_FILE = '.componentrc';
 
 const GIT_SERVER_TYPE = [{
   name: 'Github',
@@ -70,7 +72,14 @@ class Git {
     sshIp = '',
     sshPath = '',
   }) {
-    this.name = name; // 项目名称
+    if (name.startsWith('@') && name.indexOf('/') > 0) {
+      // @imooc-cli-dev/component-test ->
+      // imooc-cli-dev_component-test
+      const nameArray = name.split('/');
+      this.name = nameArray.join('_').replace('@', '');
+    } else {
+      this.name = name; // 项目名称
+    }
     this.version = version; // 项目版本
     this.dir = dir; // 源码目录
     this.git = SimpleGit(dir); // SimpleGit实例
@@ -102,7 +111,35 @@ class Git {
     await this.checkGitOwner(); // 确认远程仓库类型
     await this.checkRepo(); // 检查并创建远程仓库
     this.checkGitIgnore(); // 检查并创建.gitignore文件
+    await this.checkComponent(); // 组件合法性检查
     await this.init(); // 完成本地仓库初始化
+  }
+
+  async checkComponent() {
+    let componentFile = this.isComponent();
+    if (componentFile) {
+      log.info('开始检查build结果');
+      if (!this.buildCmd) {
+        this.buildCmd = 'npm run build';
+      }
+      require('child_process').execSync(this.buildCmd, {
+        cwd: this.dir,
+      });
+      const buildPath = path.resolve(this.dir, componentFile.buildPath);
+      if (!fs.existsSync(buildPath)) {
+        throw new Error(`构建结果：${buildPath}不存在！`);
+      }
+      const pkg = this.getPackageJson();
+      if (!pkg.files || !pkg.files.includes(componentFile.buildPath)) {
+        throw new Error(`package.json中files属性未添加构建结果目录：[${componentFile.buildPath}]，请在package.json中手动添加！`);
+      }
+      log.success('build结果检查通过！');
+    }
+  }
+
+  isComponent() {
+    const componentFilePath = path.resolve(this.dir, COMPONENT_FILE);
+    return fs.existsSync(componentFilePath) && fse.readJsonSync(componentFilePath);
   }
 
   async init() {
@@ -131,20 +168,70 @@ class Git {
   }
 
   async publish() {
-    await this.preparePublish();
-    const cloudBuild = new CloudBuild(this, {
-      buildCmd: this.buildCmd,
-      type: this.gitPublish,
-      prod: this.prod,
-    });
-    await cloudBuild.prepare();
-    await cloudBuild.init();
-    const ret = await cloudBuild.build();
-    if (ret) {
-      await this.uploadTemplate();
+    let ret = false;
+    if (this.isComponent()) {
+      log.info('开始发布组件');
+      ret = await this.saveComponentToDB();
+    } else {
+      await this.preparePublish();
+      const cloudBuild = new CloudBuild(this, {
+        buildCmd: this.buildCmd,
+        type: this.gitPublish,
+        prod: this.prod,
+      });
+      await cloudBuild.prepare();
+      await cloudBuild.init();
+      ret = await cloudBuild.build();
+      if (ret) {
+        await this.uploadTemplate();
+      }
     }
     if (this.prod && ret) {
+      await this.uploadComponentToNpm();
       this.runCreateTagTask();
+    }
+  }
+
+  async saveComponentToDB() {
+    // 1.将组件信息上传至数据库，RDS
+    log.info('上传组件信息至OSS+写入数据库');
+    const componentFile = this.isComponent();
+    let componentExamplePath = path.resolve(this.dir, componentFile.examplePath);
+    let dirs = fs.readdirSync(componentExamplePath);
+    if (dirs.includes('dist')) {
+      componentExamplePath = path.resolve(componentExamplePath, 'dist');
+      dirs = fs.readdirSync(componentExamplePath);
+      componentFile.examplePath = `${componentFile.examplePath}/dist`;
+    }
+    dirs = dirs.filter(dir => dir.match(/^index(\d)*.html$/));
+    componentFile.exampleList = dirs;
+    componentFile.exampleRealPath = componentExamplePath;
+    const data = await ComponentRequest.createComponent({
+      component: componentFile,
+      git: {
+        type: this.gitServer.type,
+        remote: this.remote,
+        version: this.version,
+        branch: this.branch,
+        login: this.login,
+        owner: this.owner,
+      },
+    });
+    if (!data) {
+      throw new Error('上传组件失败');
+    }
+    // 2.将组件多预览页面上传至OSS
+    return true;
+  }
+
+  async uploadComponentToNpm() {
+    // 完成组件上传Npm
+    if (this.isComponent()) {
+      log.info('开始发布NPM');
+      require('child_process').execSync('npm publish', {
+        cwd: this.dir,
+      });
+      log.success('NPM发布成功');
     }
   }
 
@@ -311,7 +398,6 @@ class Git {
         const uploadCmd = `scp -r ${templateFilePath} ${this.sshUser}@${this.sshIp}:${this.sshPath}`;
         log.verbose('uploadCmd', uploadCmd);
         const ret = require('child_process').execSync(uploadCmd);
-        console.log(ret.toString());
         log.success('模板文件上传成功');
         fse.emptyDirSync(ossTempDir);
       }
