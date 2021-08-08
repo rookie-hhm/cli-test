@@ -23,6 +23,8 @@ const TEMPLATE_TYPE_CUSTOM = 'custom';
 
 const WHITE_COMMAND = ['npm', 'cnpm'];
 
+const COMPONENT_FILE = '.componentrc';
+
 class InitCommand extends Command {
   init() {
     this.projectName = this._argv[0] || '';
@@ -136,9 +138,9 @@ class InitCommand extends Command {
     // 拷贝模板代码至当前目录
     let spinner = spinnerStart('正在安装模板...');
     await sleep();
+    const targetPath = process.cwd();
     try {
       const templatePath = path.resolve(this.templateNpm.cacheFilePath, 'template');
-      const targetPath = process.cwd();
       fse.ensureDirSync(templatePath);
       fse.ensureDirSync(targetPath);
       fse.copySync(templatePath, targetPath);
@@ -151,11 +153,29 @@ class InitCommand extends Command {
     const templateIgnore = this.templateInfo.ignore || [];
     const ignore = ['**/node_modules/**', ...templateIgnore];
     await this.ejsRender({ ignore });
+    // 如果是组件，则生成组件配置文件
+    await this.createComponentFile(targetPath);
     const { installCommand, startCommand } = this.templateInfo;
     // 依赖安装
     await this.execCommand(installCommand, '依赖安装失败！');
     // 启动命令执行
     await this.execCommand(startCommand, '启动执行命令失败！');
+  }
+
+  async createComponentFile(targetPath) {
+    const templateInfo = this.templateInfo;
+    const projectInfo = this.projectInfo;
+    if (templateInfo.tag.includes(TYPE_COMPONENT)) {
+      const componentData = {
+        ...projectInfo,
+        buildPath: templateInfo.buildPath,
+        examplePath: templateInfo.examplePath,
+        npmName: templateInfo.npmName,
+        npmVersion: templateInfo.version,
+      };
+      const componentFile = path.resolve(targetPath, COMPONENT_FILE);
+      fs.writeFileSync(componentFile, JSON.stringify(componentData));
+    }
   }
 
   async installCustomTemplate() {
@@ -268,7 +288,7 @@ class InitCommand extends Command {
 
   async getProjectInfo() {
     function isValidName(v) {
-      return /^[a-zA-Z]+([-][a-zA-Z][a-zA-Z0-9]*|[_][a-zA-Z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(v);
+      return /^(@[a-zA-Z0-9-_]+\/)?[a-zA-Z]+([-][a-zA-Z][a-zA-Z0-9]*|[_][a-zA-Z][a-zA-Z0-9]*|[a-zA-Z0-9])*$/.test(v);
     }
 
     let projectInfo = {};
@@ -416,6 +436,7 @@ class InitCommand extends Command {
 }
 
 function init(argv) {
+  log.verbose('argv', argv);
   return new InitCommand(argv);
 }
 
