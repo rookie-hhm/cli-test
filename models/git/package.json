@@ -18,7 +18,7 @@
     "url": "https://git.imooc.com/class-110/imooc-cli-dev.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "mocha __tests__/git.test.js"
   },
   "dependencies": {
     "@imooc-cli-dev/cloudbuild": "file:../../models/cloudbuild",
@@ -34,5 +34,9 @@
     "simple-git": "^2.39.0",
     "terminal-link": "^2.1.1",
     "user-home": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.1",
+    "should": "^13.2.3"
   }
 }

@@ -24,11 +24,14 @@ class Gitee extends GitServer {
   }
 
   getRepo(login, name) {
-    return this.request
-      .get(`/repos/${login}/${name}`)
-      .then(response => {
-        return this.handleResponse(response);
-      });
+    return new Promise((resolve, reject) => {
+      this.request
+        .get(`/repos/${login}/${name}`)
+        .then(response => {
+          resolve(response);
+        })
+        .catch(err => reject(err));
+    });
   }
 
   createRepo(name) {

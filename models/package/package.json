@@ -21,7 +21,7 @@
     "url": "https://git.imooc.com/class-110/imooc-cli-dev.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "mocha __tests__/package.test.js"
   },
   "dependencies": {
     "@imooc-cli-dev/format-path": "file:../../utils/format-path",
@@ -31,5 +31,9 @@
     "npminstall": "^4.10.0",
     "path-exists": "^4.0.0",
     "pkg-dir": "^5.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.0",
+    "should": "^13.2.3"
   }
 }

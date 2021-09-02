@@ -18,11 +18,15 @@
     "url": "git@gitee.com:sam9831/imooc-cli-dev.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "mocha __tests__/get-npm-info.test.js"
   },
   "dependencies": {
     "axios": "^0.21.0",
     "semver": "^7.3.4",
     "url-join": "^4.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.1",
+    "should": "^13.2.3"
   }
 }

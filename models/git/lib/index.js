@@ -827,4 +827,7 @@ pnpm-debug.log*
   }
 }
 
+Git.Gitee = Gitee;
+Git.Github = Github;
+
 module.exports = Git;

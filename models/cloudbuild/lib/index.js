@@ -73,6 +73,7 @@ class CloudBuild {
 
   init() {
     return new Promise((resolve, reject) => {
+      console.log(this.git.remote, this.git.name, this.git.branch, this.git.version);
       const socket = io(WS_SERVER, {
         query: {
           repo: this.git.remote,

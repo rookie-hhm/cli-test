@@ -21,11 +21,15 @@
     "url": "https://git.imooc.com/class-110/imooc-cli-dev.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "mocha __tests__/Command.test.js"
   },
   "dependencies": {
     "colors": "^1.4.0",
     "semver": "^7.3.4",
     "@imooc-cli-dev/log": "file:../../utils/log"
+  },
+  "devDependencies": {
+    "mocha": "^9.1.1",
+    "should": "^13.2.3"
   }
 }

@@ -25,10 +25,13 @@ class Command {
       chain = chain.then(() => this.initArgs());
       chain = chain.then(() => this.init());
       chain = chain.then(() => this.exec());
+      chain = chain.then(resolve);
       chain.catch(err => {
         log.error(err.message);
+        reject(err);
       });
     });
+    this.runner = runner;
   }
 
   initArgs() {
