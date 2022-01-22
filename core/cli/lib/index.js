@@ -42,6 +42,11 @@ function registerCommand() {
     .action(exec);
 
   program
+    .command('add [templateName]')
+    .option('-f, --force', '是否强制添加代码')
+    .action(exec);
+
+  program
     .command('publish')
     .option('--refreshServer', '强制更新远程Git仓库')
     .option('--refreshToken', '强制更新远程仓库token')

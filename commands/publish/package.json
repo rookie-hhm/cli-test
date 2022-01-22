@@ -24,9 +24,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@imooc-cli-dev/command": "file:../../models/command",
-    "@imooc-cli-dev/git": "file:../../models/git",
-    "@imooc-cli-dev/log": "file:../../utils/log",
+    "@imooc-cli-dev/command": "^1.0.5",
+    "@imooc-cli-dev/git": "^1.0.5",
+    "@imooc-cli-dev/log": "^1.0.4",
     "fs-extra": "^10.0.0"
-  }
+  },
+  "gitHead": "50a91c0a755217bc420511a66e41655ff30f5f36"
 }

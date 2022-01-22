@@ -24,9 +24,9 @@
     "test": "mocha __tests__/package.test.js"
   },
   "dependencies": {
-    "@imooc-cli-dev/format-path": "file:../../utils/format-path",
+    "@imooc-cli-dev/format-path": "^1.0.5",
     "@imooc-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
-    "@imooc-cli-dev/utils": "file:../../utils/utils",
+    "@imooc-cli-dev/utils": "^1.0.4",
     "fs-extra": "^9.0.1",
     "npminstall": "^4.10.0",
     "path-exists": "^4.0.0",
@@ -35,5 +35,6 @@
   "devDependencies": {
     "mocha": "^9.1.0",
     "should": "^13.2.3"
-  }
+  },
+  "gitHead": "50a91c0a755217bc420511a66e41655ff30f5f36"
 }

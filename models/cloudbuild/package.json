@@ -21,16 +21,17 @@
     "test": "mocha __tests__/cloudbuild.test.js"
   },
   "dependencies": {
-    "@imooc-cli-dev/log": "file:../../utils/log",
-    "@imooc-cli-dev/request": "file:../../utils/request",
+    "@imooc-cli-dev/log": "^1.0.4",
+    "@imooc-cli-dev/request": "^1.0.0",
     "inquirer": "^8.1.1",
     "lodash": "^4.17.21",
     "socket.io-client": "^2.0.0"
   },
   "devDependencies": {
-    "@imooc-cli-dev/git": "file:../../models/git",
+    "@imooc-cli-dev/git": "^1.0.5",
     "mocha": "^9.1.1",
     "should": "^13.2.3",
     "simple-git": "^2.45.0"
-  }
+  },
+  "gitHead": "50a91c0a755217bc420511a66e41655ff30f5f36"
 }

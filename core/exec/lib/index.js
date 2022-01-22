@@ -6,8 +6,9 @@ const log = require('@imooc-cli-dev/log');
 const { exec: spawn } = require('@imooc-cli-dev/utils');
 
 const SETTINGS = {
-  init: '@imooc-cli/init',
-  publish: '@imooc-cli/publish',
+  init: '@imooc-cli-dev/init',
+  publish: '@imooc-cli-dev/publish',
+  add: '@imooc-cli-dev/add',
 };
 
 const CACHE_DIR = 'dependencies';

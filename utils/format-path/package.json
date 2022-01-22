@@ -26,5 +26,6 @@
   "devDependencies": {
     "mocha": "^9.1.1",
     "should": "^13.2.3"
-  }
+  },
+  "gitHead": "50a91c0a755217bc420511a66e41655ff30f5f36"
 }

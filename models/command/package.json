@@ -24,12 +24,13 @@
     "test": "mocha __tests__/Command.test.js"
   },
   "dependencies": {
-    "@imooc-cli-dev/log": "file:../../utils/log",
+    "@imooc-cli-dev/log": "^1.0.4",
     "colors": "^1.4.0",
     "semver": "^7.3.4"
   },
   "devDependencies": {
     "mocha": "^9.1.1",
     "should": "^13.2.3"
-  }
+  },
+  "gitHead": "50a91c0a755217bc420511a66e41655ff30f5f36"
 }
