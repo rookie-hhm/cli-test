@@ -5,9 +5,9 @@ const fse = require('fs-extra');
 const pkgDir = require('pkg-dir').sync;
 const pathExists = require('path-exists').sync;
 const npminstall = require('npminstall');
-const { isObject } = require('@imooc-cli-dev/utils');
-const formatPath = require('@imooc-cli-dev/format-path');
-const { getDefaultRegistry, getNpmLatestVersion } = require('@imooc-cli-dev/get-npm-info');
+const { isObject } = require('@rookie-cli-dev-test/utils');
+const formatPath = require('@rookie-cli-dev-test/format-path');
+const { getDefaultRegistry, getNpmLatestVersion } = require('@rookie-cli-dev-test/get-npm-info');
 
 class Package {
   constructor(options) {

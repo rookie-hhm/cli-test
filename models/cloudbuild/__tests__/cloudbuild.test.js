@@ -1,9 +1,9 @@
 'use strict';
 
 const fs = require('fs');
-const Git = require('@imooc-cli-dev/git');
+const Git = require('@rookie-cli-dev-test/git');
 const should = require('should');
-const request = require('@imooc-cli-dev/request');
+const request = require('@rookie-cli-dev-test/request');
 const CloudBuild = require('../lib');
 
 const codePath = '/Users/sam/Desktop/test/vue3-test';

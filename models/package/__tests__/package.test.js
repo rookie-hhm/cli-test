@@ -8,9 +8,9 @@ const Package = require('../lib');
 const TARGET_PATH = '/Users/sam/Desktop/imooc-cli-dev/commands/init';
 const TARGET_PATH2 = '/Users/sam/.imooc-cli-dev';
 const STORE_DIR = '/Users/sam/.imooc-cli-dev/node_modules';
-const PACKAGE_NAME = '@imooc-cli-dev/init';
+const PACKAGE_NAME = '@rookie-cli-dev-test/init';
 const PACKAGE_NAME2 = '@imooc-cli/init';
-const PACKAGE_NAME_CONVERT = '@imooc-cli-dev_init';
+const PACKAGE_NAME_CONVERT = '@rookie-cli-dev-test_init';
 const PACKAGE_VERSION = '1.0.0';
 const PACKAGE_LATEST_VERSION = 'latest';
 
@@ -95,14 +95,14 @@ describe('Package prepare方法测试', function() {
 describe('Package cacheFilePath属性测试', function() {
   it('获取cacheFilePath属性', function() {
     const instance = createPackageInstance();
-    instance.cacheFilePath.should.equal('/Users/sam/.imooc-cli-dev/node_modules/_@imooc-cli-dev_init@1.0.0@@imooc-cli-dev/init');
+    instance.cacheFilePath.should.equal('/Users/sam/.imooc-cli-dev/node_modules/_@rookie-cli-dev-test_init@1.0.0@@rookie-cli-dev-test/init');
   });
 });
 
 describe('Package getSpecificCacheFilePath方法测试', function() {
   it('获取getSpecificCacheFilePath属性', function() {
     const instance = createPackageInstance();
-    instance.getSpecificCacheFilePath('1.0.0').should.equal('/Users/sam/.imooc-cli-dev/node_modules/_@imooc-cli-dev_init@1.0.0@@imooc-cli-dev/init');
+    instance.getSpecificCacheFilePath('1.0.0').should.equal('/Users/sam/.imooc-cli-dev/node_modules/_@rookie-cli-dev-test_init@1.0.0@@rookie-cli-dev-test/init');
   });
 });
 

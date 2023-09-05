@@ -1,5 +1,5 @@
 const axios = require('axios');
-const log = require('@imooc-cli-dev/log');
+const log = require('@rookie-cli-dev-test/log');
 
 module.exports = {
   createComponent: async function(component) {

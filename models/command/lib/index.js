@@ -2,7 +2,7 @@
 
 const semver = require('semver');
 const colors = require('colors/safe');
-const log = require('@imooc-cli-dev/log');
+const log = require('@rookie-cli-dev-test/log');
 
 const LOWEST_NODE_VERSION = '12.0.0';
 
@@ -33,7 +33,12 @@ class Command {
     });
     this.runner = runner;
   }
-
+  static add () {
+    console.log(1)
+  }
+  // static reb() {
+  //   console.log('reb')
+  // }
   initArgs() {
     this._cmd = this._argv[this._argv.length - 1];
     this._argv = this._argv.slice(0, this._argv.length - 1);

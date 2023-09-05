@@ -1,4 +1,4 @@
-const request = require('@imooc-cli-dev/request');
+const request = require('@rookie-cli-dev-test/request');
 
 module.exports = function() {
   return request({

@@ -1,8 +1,8 @@
 'use strict';
 
 const io = require('socket.io-client');
-const log = require('@imooc-cli-dev/log');
-const request = require('@imooc-cli-dev/request');
+const log = require('@rookie-cli-dev-test/log');
+const request = require('@rookie-cli-dev-test/request');
 const get = require('lodash/get');
 const inquirer = require('inquirer');
 

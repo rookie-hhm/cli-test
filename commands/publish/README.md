@@ -1,11 +1,11 @@
-# `@imooc-cli-dev/publish`
+# `@rookie-cli-dev-test/publish`
 
 > TODO: description
 
 ## Usage
 
 ```
-const publish = require('@imooc-cli-dev/publish');
+const publish = require('@rookie-cli-dev-test/publish');
 
 // TODO: DEMONSTRATE API
 ```

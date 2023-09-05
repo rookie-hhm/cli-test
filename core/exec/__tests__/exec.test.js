@@ -2,6 +2,6 @@
 
 const exec = require('..');
 
-describe('@imooc-cli-dev/exec', () => {
+describe('@rookie-cli-dev-test/exec', () => {
     it('needs tests');
 });

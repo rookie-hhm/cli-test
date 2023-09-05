@@ -8,8 +8,8 @@ const colors = require('colors/safe');
 const userHome = require('user-home');
 const pathExists = require('path-exists').sync;
 const commander = require('commander');
-const log = require('@imooc-cli-dev/log');
-const exec = require('@imooc-cli-dev/exec');
+const log = require('@rookie-cli-dev-test/log');
+const exec = require('@rookie-cli-dev-test/exec');
 
 const constant = require('./const');
 const pkg = require('../package.json');
@@ -101,7 +101,7 @@ async function prepare() {
 async function checkGlobalUpdate() {
   const currentVersion = pkg.version;
   const npmName = pkg.name;
-  const { getNpmSemverVersion } = require('@imooc-cli-dev/get-npm-info');
+  const { getNpmSemverVersion } = require('@rookie-cli-dev-test/get-npm-info');
   const lastVersion = await getNpmSemverVersion(currentVersion, npmName);
   if (lastVersion && semver.gt(lastVersion, currentVersion)) {
     log.warn(colors.yellow(`请手动更新 ${npmName}，当前版本：${currentVersion}，最新版本：${lastVersion}

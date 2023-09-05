@@ -21,13 +21,13 @@ function createGitInstance({ complexName = false, isComponent = false, isProd = 
     if (isComponent) {
       if (isProd) {
         return new Git({
-          name: '@imooc-cli-dev/component-test5',
+          name: '@rookie-cli-dev-test/component-test5',
           version: '1.0.0',
           dir: '/Users/sam/Desktop/test/component-test8',
         }, {});
       } else {
         return new Git({
-          name: '@imooc-cli-dev/component-test',
+          name: '@rookie-cli-dev-test/component-test',
           version: '1.0.5',
           dir: '/Users/sam/Desktop/test/component-test4',
         }, {});

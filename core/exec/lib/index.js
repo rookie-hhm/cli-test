@@ -1,14 +1,14 @@
 'use strict';
 
 const path = require('path');
-const Package = require('@imooc-cli-dev/package');
-const log = require('@imooc-cli-dev/log');
-const { exec: spawn } = require('@imooc-cli-dev/utils');
+const Package = require('@rookie-cli-dev-test/package');
+const log = require('@rookie-cli-dev-test/log');
+const { exec: spawn } = require('@rookie-cli-dev-test/utils');
 
 const SETTINGS = {
-  init: '@imooc-cli-dev/init',
-  publish: '@imooc-cli-dev/publish',
-  add: '@imooc-cli-dev/add',
+  init: '@rookie-cli-dev-test/init',
+  publish: '@rookie-cli-dev-test/publish',
+  add: '@rookie-cli-dev-test/add',
 };
 
 const CACHE_DIR = 'dependencies';

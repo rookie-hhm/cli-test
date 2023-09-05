@@ -1,5 +1,5 @@
 {
-  "name": "@imooc-cli-dev/git",
+  "name": "@rookie-cli-dev-test/git",
   "version": "1.0.5",
   "description": "> TODO: description",
   "author": "sam <247765564@qq.com>",
@@ -21,10 +21,10 @@
     "test": "mocha __tests__/git.test.js"
   },
   "dependencies": {
-    "@imooc-cli-dev/cloudbuild": "^1.0.5",
-    "@imooc-cli-dev/log": "^1.0.4",
-    "@imooc-cli-dev/request": "^1.0.0",
-    "@imooc-cli-dev/utils": "^1.0.4",
+    "@rookie-cli-dev-test/cloudbuild": "^1.0.5",
+    "@rookie-cli-dev-test/log": "^1.0.4",
+    "@rookie-cli-dev-test/request": "^1.0.0",
+    "@rookie-cli-dev-test/utils": "^1.0.4",
     "axios": "^0.21.1",
     "fs-extra": "^10.0.0",
     "inquirer": "^8.1.0",

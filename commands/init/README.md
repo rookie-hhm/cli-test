@@ -1,11 +1,11 @@
-# `@imooc-cli-dev/init`
+# `@rookie-cli-dev-test/init`
 
 > TODO: description
 
 ## Usage
 
 ```
-const init = require('@imooc-cli-dev/init');
+const init = require('@rookie-cli-dev-test/init');
 
 // TODO: DEMONSTRATE API
 ```

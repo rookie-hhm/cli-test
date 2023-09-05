@@ -1,11 +1,11 @@
-# `@imooc-cli-dev/log`
+# `@rookie-cli-dev-test/log`
 
 > TODO: description
 
 ## Usage
 
 ```
-const log = require('@imooc-cli-dev/log');
+const log = require('@rookie-cli-dev-test/log');
 
 // TODO: DEMONSTRATE API
 ```

@@ -2,6 +2,6 @@
 
 const request = require('..');
 
-describe('@imooc-cli-dev/request', () => {
+describe('@rookie-cli-dev-test/request', () => {
     it('needs tests');
 });

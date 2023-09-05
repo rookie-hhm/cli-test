@@ -10,10 +10,10 @@ const terminalLink = require('terminal-link');
 const semver = require('semver');
 const Listr = require('listr');
 const { Observable } = require('rxjs');
-const log = require('@imooc-cli-dev/log');
-const { readFile, writeFile, spinnerStart } = require('@imooc-cli-dev/utils');
-const request = require('@imooc-cli-dev/request');
-const CloudBuild = require('@imooc-cli-dev/cloudbuild');
+const log = require('@rookie-cli-dev-test/log');
+const { readFile, writeFile, spinnerStart } = require('@rookie-cli-dev-test/utils');
+const request = require('@rookie-cli-dev-test/request');
+const CloudBuild = require('@rookie-cli-dev-test/cloudbuild');
 const Github = require('./Github');
 const Gitee = require('./Gitee');
 const ComponentRequest = require('../lib/ComponentRequest');
@@ -73,7 +73,7 @@ class Git {
     sshPath = '',
   }) {
     if (name.startsWith('@') && name.indexOf('/') > 0) {
-      // @imooc-cli-dev/component-test ->
+      // @rookie-cli-dev-test/component-test ->
       // imooc-cli-dev_component-test
       const nameArray = name.split('/');
       this.name = nameArray.join('_').replace('@', '');
