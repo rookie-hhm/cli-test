@@ -21,11 +21,11 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@rookie-cli-dev-test/command": "file:../../models/command",
-    "@rookie-cli-dev-test/log": "file:../../utils/log",
-    "@rookie-cli-dev-test/package": "file:../../models/package",
-    "@rookie-cli-dev-test/request": "file:../../utils/request",
-    "@rookie-cli-dev-test/utils": "file:../../utils/utils",
+    "@rookie-cli-dev-test/command": "^1.1.0",
+    "@rookie-cli-dev-test/log": "^1.1.0",
+    "@rookie-cli-dev-test/package": "^1.1.0",
+    "@rookie-cli-dev-test/request": "^1.1.0",
+    "@rookie-cli-dev-test/utils": "^1.1.0",
     "ejs": "^3.1.6",
     "fs-extra": "^10.0.0",
     "glob": "^7.2.0",
@@ -34,5 +34,9 @@
     "pkg-up": "^3.1.0",
     "semver": "^7.3.5",
     "user-home": "^3.0.0"
+  },
+  "gitHead": "72a8e29296a15fb3026bf7080c89fefe38d5bd39",
+  "publishConfig": {
+    "access": "public"
   }
 }
