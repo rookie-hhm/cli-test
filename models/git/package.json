@@ -1,6 +1,6 @@
 {
   "name": "@rookie-cli-dev-test/git",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "> TODO: description",
   "author": "sam <247765564@qq.com>",
   "homepage": "",
@@ -21,10 +21,10 @@
     "test": "mocha __tests__/git.test.js"
   },
   "dependencies": {
-    "@rookie-cli-dev-test/cloudbuild": "^1.0.5",
-    "@rookie-cli-dev-test/log": "^1.0.4",
-    "@rookie-cli-dev-test/request": "^1.0.0",
-    "@rookie-cli-dev-test/utils": "^1.0.4",
+    "@rookie-cli-dev-test/cloudbuild": "^1.1.0",
+    "@rookie-cli-dev-test/log": "^1.1.0",
+    "@rookie-cli-dev-test/request": "^1.1.0",
+    "@rookie-cli-dev-test/utils": "^1.1.0",
     "axios": "^0.21.1",
     "fs-extra": "^10.0.0",
     "inquirer": "^8.1.0",

@@ -1,6 +1,6 @@
 {
   "name": "@rookie-cli-dev-test/package",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "imooc-cli-dev npm modules",
   "author": "sam <247765564@qq.com>",
   "homepage": "",
@@ -24,9 +24,9 @@
     "test": "mocha __tests__/package.test.js"
   },
   "dependencies": {
-    "@rookie-cli-dev-test/format-path": "^1.0.5",
+    "@rookie-cli-dev-test/format-path": "^1.1.0",
     "@rookie-cli-dev-test/get-npm-info": "file:../../utils/get-npm-info",
-    "@rookie-cli-dev-test/utils": "^1.0.4",
+    "@rookie-cli-dev-test/utils": "^1.1.0",
     "fs-extra": "^9.0.1",
     "npminstall": "^4.10.0",
     "path-exists": "^4.0.0",
