@@ -8,11 +8,11 @@ const fse = require('fs-extra');
 const glob = require('glob');
 const ejs = require('ejs');
 const semver = require('semver');
-const Command = require('@imooc-cli-dev/command');
-const Package = require('@imooc-cli-dev/package');
-const request = require('@imooc-cli-dev/request');
-const log = require('@imooc-cli-dev/log');
-const { sleep, spinnerStart, execAsync } = require('@imooc-cli-dev/utils');
+const Command = require('@rookie-cli-dev-test/command');
+const Package = require('@rookie-cli-dev-test/package');
+const request = require('@rookie-cli-dev-test/request');
+const log = require('@rookie-cli-dev-test/log');
+const { sleep, spinnerStart, execAsync } = require('@rookie-cli-dev-test/utils');
 
 const ADD_MODE_SECTION = 'section';
 const ADD_MODE_PAGE = 'page';
@@ -452,3 +452,7 @@ function add(argv) {
 
 module.exports = add;
 module.exports.AddCommand = AddCommand;
+
+
+// const Command = require('@rookie-cli-dev-test/command')
+// console.log(Command.reb(), Command.add())
