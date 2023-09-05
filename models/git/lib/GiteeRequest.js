@@ -23,6 +23,7 @@ class GiteeRequest {
   }
 
   get(url, params, headers) {
+    console.log()
     return this.service({
       url,
       params: {
