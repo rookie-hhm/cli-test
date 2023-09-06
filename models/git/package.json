@@ -21,7 +21,7 @@
     "test": "mocha __tests__/git.test.js"
   },
   "dependencies": {
-    "@rookie-cli-dev-test/cloudbuild": "^1.1.1",
+    "@rookie-cli-dev-test/cloudbuild": "file:../cloudbuild",
     "@rookie-cli-dev-test/log": "^1.1.1",
     "@rookie-cli-dev-test/request": "^1.1.1",
     "@rookie-cli-dev-test/utils": "^1.1.1",
