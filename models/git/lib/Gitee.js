@@ -17,6 +17,7 @@ class Gitee extends GitServer {
   }
 
   getOrg(username) {
+    
     return this.request.get(`/users/${username}/orgs`, {
       page: 1,
       per_page: 100,
@@ -24,7 +25,7 @@ class Gitee extends GitServer {
   }
 
   getRepo(login, name) {
-    
+
     return new Promise((resolve, reject) => {
       this.request
         .get(`/repos/${login}/${name}`)
