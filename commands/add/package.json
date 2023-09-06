@@ -1,6 +1,6 @@
 {
   "name": "@rookie-cli-dev-test/add",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "imooc-cli-dev add",
   "author": "sam <247765564@qq.com>",
   "homepage": "",
@@ -23,7 +23,7 @@
   "dependencies": {
     "@rookie-cli-dev-test/command": "^1.2.0",
     "@rookie-cli-dev-test/log": "^1.2.0",
-    "@rookie-cli-dev-test/package": "^1.2.1",
+    "@rookie-cli-dev-test/package": "^1.2.2",
     "@rookie-cli-dev-test/request": "^1.2.0",
     "@rookie-cli-dev-test/utils": "^1.2.0",
     "ejs": "^3.1.6",
