@@ -1,6 +1,6 @@
 {
   "name": "@rookie-cli-dev-test/cloudbuild",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "> TODO: description",
   "author": "sam <247765564@qq.com>",
   "homepage": "",
@@ -28,7 +28,7 @@
     "socket.io-client": "^2.0.0"
   },
   "devDependencies": {
-    "@rookie-cli-dev-test/git": "^1.2.0",
+    "@rookie-cli-dev-test/git": "^1.2.3",
     "mocha": "^9.1.1",
     "should": "^13.2.3",
     "simple-git": "^2.45.0"
