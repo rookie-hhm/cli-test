@@ -66,6 +66,8 @@ function writeFile(path, data, { rewrite = true } = {}) {
   }
 }
 
+
+
 module.exports = {
   isObject,
   spinnerStart,

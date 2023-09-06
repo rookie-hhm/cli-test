@@ -16,6 +16,7 @@ function getNpmInfo(npmName, registry) {
     }
     return null;
   }).catch(err => {
+    
     return Promise.reject(err);
   });
 }

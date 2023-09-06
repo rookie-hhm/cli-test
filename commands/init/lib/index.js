@@ -27,6 +27,7 @@ const COMPONENT_FILE = '.componentrc';
 
 class InitCommand extends Command {
   init() {
+
     this.projectName = this._argv[0] || '';
     this.force = !!this._cmd.force;
     log.verbose('projectName', this.projectName);

@@ -27,6 +27,7 @@ async function exec() {
   const packageVersion = 'latest';
 
   if (!targetPath) {
+    
     targetPath = path.resolve(homePath, CACHE_DIR); // 生成缓存路径
     storeDir = path.resolve(targetPath, 'node_modules');
     log.verbose('targetPath', targetPath);

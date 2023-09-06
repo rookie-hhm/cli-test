@@ -23,6 +23,7 @@ function parseMsg(msg) {
 
 class CloudBuild {
   constructor(git, options) {
+    
     this.git = git;
     this.buildCmd = options.buildCmd;
     this.timeout = TIME_OUT;

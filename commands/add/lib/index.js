@@ -300,6 +300,7 @@ class AddCommand extends Command {
     log.info('正在安装页面模板的依赖');
     await this.execCommand('npm install', path.dirname(targetPkgPath));
     log.success('安装页面模板依赖成功');
+    console.log('123')
   }
 
   async execCommand(command, cwd) {

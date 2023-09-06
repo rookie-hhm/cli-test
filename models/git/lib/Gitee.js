@@ -24,6 +24,7 @@ class Gitee extends GitServer {
   }
 
   getRepo(login, name) {
+    
     return new Promise((resolve, reject) => {
       this.request
         .get(`/repos/${login}/${name}`)

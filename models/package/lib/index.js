@@ -111,6 +111,7 @@ class Package {
       return null;
     }
     if (this.storeDir) {
+      
       return _getRootFile(this.cacheFilePath);
     } else {
       return _getRootFile(this.targetPath);

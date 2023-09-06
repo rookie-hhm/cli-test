@@ -28,6 +28,7 @@ class PublishCommand extends Command {
       const startTime = new Date().getTime();
       // 1.初始化检查
       this.prepare();
+      
       // 2.Git Flow自动化
       const git = new Git(this.projectInfo, this.options);
       await git.prepare(); // 自动化提交准备和代码仓库初始化
