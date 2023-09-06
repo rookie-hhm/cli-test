@@ -3,6 +3,7 @@ const BASE_URL = 'https://gitee.com/api/v5';
 
 class GiteeRequest {
   constructor(token) {
+    console.log(token)
     this.token = token;
     this.service = axios.create({
       baseURL: BASE_URL,
